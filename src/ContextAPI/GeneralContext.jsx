@@ -125,10 +125,13 @@ export const GeneralProvider = ({ children }) => {
       ],
     },
   ];
+  const [score, setScore] = useState(0);
   const [games, setGames] = useState(data);
   const values = {
     games,
     setGames,
+    score,
+    setScore,
   };
   return <General.Provider value={values}>{children}</General.Provider>;
 };

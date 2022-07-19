@@ -4,10 +4,11 @@ import React, { useContext } from "react";
 
 import MainPage from "./components/MainPage";
 import Games from "./components/Games";
-import Game from "./components/Game";
+import Questions from "./components/Questions";
 import Header from "./components/Header";
 import Create from "./components/Create";
 import Change from "./components/Change";
+import Results from "./components/Results";
 function App() {
   const { games } = useContext(General);
 
@@ -27,8 +28,9 @@ function App() {
             />
           ))}
         />
-        <Route path="/games/:gameID" element={<Game />} />
+        <Route path="/games/:gameID" element={<Questions />} />
         <Route path="/create/change/:gameID" element={<Change />} />
+        <Route path="/results" element={<Results />} />
       </Routes>
     </div>
   );

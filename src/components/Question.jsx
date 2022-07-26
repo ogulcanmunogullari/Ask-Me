@@ -2,9 +2,8 @@ import React, { useState, useEffect, useContext } from "react";
 import { General } from "../ContextAPI/GeneralContext";
 import { useNavigate } from "react-router-dom";
 
-function Question({ question, state, setState, questions }) {
-  const { score, setScore } = useContext(General);
-
+function Question({ question, state, setState, questions, gameID }) {
+  const { setScore } = useContext(General);
   const [check, setCheck] = useState(false);
   const [isDisabled, setIsDisabled] = useState(null);
   const { answers, title } = question;
@@ -12,7 +11,7 @@ function Question({ question, state, setState, questions }) {
   const stateFunc = () => {
     state < questions.length - 1
       ? setState((current) => current + 1)
-      : navigate("/results", { replace: true });
+      : navigate(`/results/${gameID}`, { replace: true });
 
     setIsDisabled(null);
     //null yerine sonuçlar linkine gidecek

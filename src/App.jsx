@@ -30,7 +30,7 @@ function App() {
         />
         <Route path="/games/:gameID" element={<Questions />} />
         <Route path="/create/change/:gameID" element={<Change />} />
-        <Route path="/results" element={<Results />} />
+        <Route path="/results/:gameID" element={<Results />} />
       </Routes>
     </div>
   );

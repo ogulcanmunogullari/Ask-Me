@@ -1,5 +1,5 @@
 import React, { useContext, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import { General } from "../ContextAPI/GeneralContext";
 
 function Change() {
@@ -8,8 +8,11 @@ function Change() {
   const [changedText, setChangedText] = useState("");
   const [takeID, setTakeID] = useState(0);
   const [dialog, setDialog] = useState(false);
-  const { games, setGames } = useContext(General);
+  const { games } = useContext(General);
   const { gameID } = useParams();
+  const [pass, setPass] = useState("");
+  const [passDialog, setPassDialog] = useState(false);
+
   const openDialog = (e, questionID) => {
     setDialog((currentDialog) => !currentDialog);
     setChangedText((current) => (current = e.title));
@@ -28,6 +31,7 @@ function Change() {
     console.log(takeID);
     setDialog((current) => !current);
   };
+
   return (
     <div>
       <dialog open={dialog}>
@@ -48,26 +52,47 @@ function Change() {
         </div>
         <input type="button" onClick={() => handleDialog(changedText)} />
       </dialog>
+
       {games
         .filter((game) => game.gameID == gameID)
         .map((game) => (
           <div key={game.gameID}>
-            {game.questions.map((question) => (
-              <div key={question.id} id={question.id}>
-                <div onClick={(e) => openDialog(question, question)}>
-                  {question.title}
+            {game.password == pass ? (
+              game.questions.map((question) => (
+                <div key={question.id} id={question.id}>
+                  <div onClick={(e) => openDialog(question, question)}>
+                    {question.title}
+                  </div>
+                  {question.answers.map((answer) => (
+                    <span
+                      onClick={(e) => openDialog(answer, question)}
+                      style={{ marginLeft: "10px" }}
+                      key={answer.id}
+                    >
+                      {answer.title} {answer.isTrue && " / true"}
+                    </span>
+                  ))}
                 </div>
-                {question.answers.map((answer) => (
-                  <span
-                    onClick={(e) => openDialog(answer, question)}
-                    style={{ marginLeft: "10px" }}
-                    key={answer.id}
-                  >
-                    {answer.title} {answer.isTrue && " / true"}
-                  </span>
-                ))}
+              ))
+            ) : (
+              <div>
+                <dialog open={passDialog}>
+                  <input
+                    type="password"
+                    value={pass}
+                    onChange={(e) => setPass(e.target.value)}
+                  />
+                  <button onClick={() => setPassDialog((old) => !old)}>
+                    Submit
+                  </button>
+                </dialog>
+                <div>You have to know password of question</div>
+                <button onClick={() => setPassDialog((old) => !old)}>
+                  I know the password
+                </button>
+                <Link to="/games">I dont know the password</Link>
               </div>
-            ))}
+            )}
           </div>
         ))}
     </div>

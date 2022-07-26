@@ -16,6 +16,7 @@ function Questions() {
             <div key={index}>
               <div>{game.gameID}</div>
               <Question
+                gameID={gameID}
                 setState={setQuestionId}
                 state={questionId}
                 questions={game.questions}

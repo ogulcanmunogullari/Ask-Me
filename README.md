@@ -4,19 +4,25 @@
 </ul>
 <h1> 18.07.2022 Notes, </h1>
 <ul>
-    <li> Game is playable now, but i dont adding creating game yet.</li>
+    <li> Game is playable but i dont adding "Creating Game" yet.</li>
 </ul>
 <h1> 26.07.2022 Notes,</h1>
 <ul>
-    <li> Adding creating game and some password check on change game it.</li>
+    <li> Adding "Creating Game" and some password check on change game it.</li>
     <li> Game is now playable.</li>
-    <li> Has no css. </li>
+    <li> 
+        <ul>
+            <li> <h3> Knowing issues; </h3> </li>
+            <li> Has no css. </li>
+        </ul> 
+     </li>
+    
 </ul>
 <h1> 27.07.2022 Notes,</h1>
 <ul>
-    <li> Now has no static games.</li>
+    <li> Deleting static games.</li>
     <li> Every game has unique id.</li>
-    <li> Deleting game feature. </li>
+    <li> Adding "Deleting game" feature. </li>
     <li> 
         <ul>
             <li> <h3> Knowing issues; </h3> </li>

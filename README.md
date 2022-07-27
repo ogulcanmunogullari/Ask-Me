@@ -37,4 +37,4 @@
         </ul> 
      </li>
 </ul>
-<a href="https://ogulcan-question.netlify.app/" target="_blank"><h1> Live on Netlify!</h1> </a>
+<h1><a href="https://ogulcan-question.netlify.app/" target="_blank">  Live on Netlify! </a></h1>

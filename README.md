@@ -27,7 +27,13 @@
         <ul>
             <li> <h3> Knowing issues; </h3> </li>
             <li> There is no database for games. </li>
-            <li> Change game section has no adding new question feature. </li>
+            <li> <del> Change game section has no adding new question feature.</del>  </li>
+        </ul> 
+     </li>
+     <li> 
+        <ul>
+            <li> <h3> Fixed issues; </h3> </li>
+            <li> Adding "Add new question" section </li>
         </ul> 
      </li>
 </ul>

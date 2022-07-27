@@ -175,16 +175,20 @@ function Create() {
           </form>
         </dialog>
       </div>
-      <div>
-        <h2>Change</h2>
-        {games.map((game, index) =>
-          game.changeble === true ? (
-            <div key={index}>
-              <Link to={`/create/change/${game.gameID}`}>{game.gameName}</Link>
-            </div>
-          ) : null
-        )}
-      </div>
+      {games != "" ? (
+        <div>
+          <h2>Change</h2>
+          {games.map((game, index) =>
+            game.changeble === true ? (
+              <div key={index}>
+                <Link to={`/create/change/${game.gameID}`}>
+                  {game.gameName}
+                </Link>
+              </div>
+            ) : null
+          )}
+        </div>
+      ) : null}
     </div>
   );
 }

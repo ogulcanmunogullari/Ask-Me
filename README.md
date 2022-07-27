@@ -12,3 +12,16 @@
     <li> Game is now playable.</li>
     <li> Has no css. </li>
 </ul>
+<h1> 27.07.2022 Notes,</h1>
+<ul>
+    <li> Now has no static games.</li>
+    <li> Every game has unique id.</li>
+    <li> Deleting game feature. </li>
+    <li> 
+        <ul>
+            <li> <h3> Knowing issues; </h3> </li>
+            <li> There is no database for games. </li>
+            <li> Change game section has no adding new question feature. </li>
+        </ul> 
+     </li>
+</ul>

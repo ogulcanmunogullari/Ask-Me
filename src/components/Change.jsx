@@ -1,5 +1,5 @@
 import React, { useContext, useState } from "react";
-import { useParams, Link } from "react-router-dom";
+import { useParams, Link, useNavigate } from "react-router-dom";
 import { General } from "../ContextAPI/GeneralContext";
 
 function Change() {
@@ -8,11 +8,11 @@ function Change() {
   const [changedText, setChangedText] = useState("");
   const [takeID, setTakeID] = useState(0);
   const [dialog, setDialog] = useState(false);
-  const { games } = useContext(General);
+  const { games, setGames } = useContext(General);
   const { gameID } = useParams();
   const [pass, setPass] = useState("");
   const [passDialog, setPassDialog] = useState(false);
-
+  const navigate = useNavigate();
   const openDialog = (e, questionID) => {
     setDialog((currentDialog) => !currentDialog);
     setChangedText((current) => (current = e.title));
@@ -20,18 +20,23 @@ function Change() {
     setQid(e);
   };
   const handleDialog = (changedText) => {
-    if (qId.answers) {
-      games[gameID - 1].questions[takeID.id - 1].title = changedText;
-    } else {
-      games[gameID - 1].questions[takeID.id - 1].answers[qId.id - 1].title =
-        changedText;
-      games[gameID - 1].questions[takeID.id - 1].answers[qId.id - 1].isTrue =
-        checked;
-    }
-    console.log(takeID);
+    games
+      .filter((game) => game.gameID == gameID)
+      .map((game) => {
+        if (qId.answers) {
+          game.questions[takeID.id - 1].title = changedText;
+        } else {
+          game.questions[takeID.id - 1].answers[qId.id - 1].title = changedText;
+          game.questions[takeID.id - 1].answers[qId.id - 1].isTrue = checked;
+        }
+      });
     setDialog((current) => !current);
   };
 
+  const filterFunc = () => {
+    setGames(games.filter((item) => item.gameID != gameID));
+    navigate(`/`, { replace: true });
+  };
   return (
     <div>
       <dialog open={dialog}>
@@ -57,6 +62,10 @@ function Change() {
         .filter((game) => game.gameID == gameID)
         .map((game) => (
           <div key={game.gameID}>
+            <div>{game.gameName}</div>
+            <div className="change_delete" onClick={() => filterFunc()}>
+              Delete this game
+            </div>
             {game.password == pass ? (
               game.questions.map((question) => (
                 <div key={question.id} id={question.id}>

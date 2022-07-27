@@ -53,17 +53,14 @@ function Create() {
   const formHandle = (e) => {
     e.preventDefault();
     let list = [...e.target.elements];
-    if (list.every((item) => item.value)) {
-      setNewGame({
-        gameID: games.length + 1,
-        gameName: list[1].value,
-        password: list[2].value,
-        changeble: list[3].checked,
-        questions: newQuestions,
-      });
-    } else {
-      alert("Fill the question");
-    }
+
+    setNewGame({
+      gameID: Math.floor(Math.random() * 1_000_000_000),
+      gameName: list[0].value,
+      password: list[1].value,
+      changeble: list[2].checked,
+      questions: newQuestions,
+    });
   };
 
   return (
@@ -72,15 +69,10 @@ function Create() {
         <h1> Create </h1>
         <form onSubmit={formHandle}>
           <input
-            type="number"
-            name="gameID"
-            value={games.length + 1}
-            disabled
-          />
-          <input
             type="text"
             name="gameName"
             placeholder="Game Name"
+            required
             autoComplete="off"
           />
           <input type="password" name="password" placeholder="Password" />

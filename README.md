@@ -37,7 +37,6 @@
         </ul> 
      </li>
 </ul>
-<<<<<<< HEAD
 <h1> 28.07.2022 Notes,</h1>
 <ul>
     <li> Add "Deleting Question" feature.</li>
@@ -52,10 +51,9 @@
         <ul>
             <li> <h3> Fixed issues; </h3> </li>
             <li> Adding some UX on if there is no question. </li>
+            <li> Fix counting score with old value when routing browser buttons.  </li>
         </ul> 
      </li>
 </ul>
-<a href="https://ogulcan-question.netlify.app/" target="_blank"><h1> Live on Netlify!</h1> </a>
-=======
-<h1><a href="https://ogulcan-question.netlify.app/" target="_blank">  Live on Netlify! </a></h1>
->>>>>>> 08d773be2e7cb848ccde1beed8c0859b56f2adc6
+
+<h1><a href="https://ogulcan-question.netlify.app/">  Live on Netlify! </a></h1>

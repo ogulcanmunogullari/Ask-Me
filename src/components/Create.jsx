@@ -10,9 +10,13 @@ function Create() {
   const clearQ = (x) => {
     x[0].value = "";
     x[1].value = "";
+    x[2].checked = false;
     x[3].value = "";
+    x[4].checked = false;
     x[5].value = "";
+    x[7].checked = false;
     x[7].value = "";
+    x[8].checked = false;
   };
   const dialogHandle = (e) => {
     e.preventDefault();

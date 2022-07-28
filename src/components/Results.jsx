@@ -13,7 +13,8 @@ function Results() {
           return (
             <div key={index}>
               <span>
-                100 üzerinden: {(100 / game.questions.length) * score}
+                100 üzerinden:{" "}
+                {Math.round((100 / game.questions.length) * score)}
               </span>
             </div>
           );

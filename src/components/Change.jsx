@@ -5,6 +5,7 @@ import { General } from "../ContextAPI/GeneralContext";
 function Change() {
   const [checked, setChecked] = useState(false);
   const [qId, setQid] = useState(0);
+  const [element, setElement] = useState({});
   const [changedText, setChangedText] = useState("");
   const [takeID, setTakeID] = useState(0);
   const [dialog, setDialog] = useState(false);
@@ -15,30 +16,34 @@ function Change() {
   const [passDialog, setPassDialog] = useState(false);
   const navigate = useNavigate();
   const openDialog = (e, questionID) => {
+    setElement(e);
     setDialog((currentDialog) => !currentDialog);
     setChangedText((current) => (current = e.title));
     setTakeID(questionID);
-    setQid(e);
   };
   const handleDialog = (changedText) => {
+    element.title = changedText;
+    element.isTrue = checked;
+    setDialog((current) => !current);
+  };
+  const deleteDialog = () => {
     games
       .filter((game) => game.gameID == gameID)
       .map((game) => {
-        if (qId.answers) {
-          game.questions[takeID.id - 1].title = changedText;
-        } else {
-          game.questions[takeID.id - 1].answers[qId.id - 1].title = changedText;
-          game.questions[takeID.id - 1].answers[qId.id - 1].isTrue = checked;
-        }
+        game.questions = game.questions.filter((item) => item != element);
       });
     setDialog((current) => !current);
   };
   const clearQ = (x) => {
     x[0].value = "";
     x[1].value = "";
+    x[2].checked = false;
     x[3].value = "";
+    x[4].checked = false;
     x[5].value = "";
+    x[6].checked = false;
     x[7].value = "";
+    x[8].checked = false;
   };
   const handleDialog2 = (e) => {
     e.preventDefault();
@@ -71,7 +76,6 @@ function Change() {
     };
     clearQ(e.target.elements);
     games.filter((game) => game.gameID == gameID)[0].questions.push(newQ);
-    console.log(games.filter((game) => game.gameID == gameID)[0].questions);
     //Database yollama gelecek???
     setDialog2((current) => !current);
   };
@@ -79,6 +83,7 @@ function Change() {
     setGames(games.filter((item) => item.gameID != gameID));
     navigate(`/`, { replace: true });
   };
+
   return (
     <div>
       <dialog open={dialog}>
@@ -97,7 +102,16 @@ function Change() {
             checked={checked}
           />
         </div>
-        <input type="button" onClick={() => handleDialog(changedText)} />
+        <input
+          type="button"
+          value="Save"
+          onClick={() => handleDialog(changedText)}
+        />
+        <input
+          type="button"
+          value="Delete This Question"
+          onClick={() => deleteDialog()}
+        />
       </dialog>
       <dialog open={dialog2}>
         <form onSubmit={handleDialog2}>
@@ -203,17 +217,18 @@ function Change() {
             </div>
             {game.password == pass ? (
               game.questions.map((question) => (
-                <div key={question.id} id={question.id}>
-                  <div onClick={(e) => openDialog(question, question)}>
+                <div key={Math.random() * 1_000_000_000} id={question.id}>
+                  <div onClick={(e) => openDialog(question)}>
                     {question.title}
                   </div>
                   {question.answers.map((answer) => (
                     <span
-                      onClick={(e) => openDialog(answer, question)}
+                      onClick={(e) => openDialog(question)}
                       style={{ marginLeft: "10px" }}
                       key={answer.id}
                     >
-                      {answer.title} {answer.isTrue && " / true"}
+                      <span>{answer.title}</span>{" "}
+                      <span>{answer.isTrue && " / true"}</span>{" "}
                     </span>
                   ))}
                 </div>

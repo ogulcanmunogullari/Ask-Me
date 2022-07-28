@@ -37,4 +37,21 @@
         </ul> 
      </li>
 </ul>
+<h1> 28.07.2022 Notes,</h1>
+<ul>
+    <li> Add "Deleting Question" feature.</li>
+    <li> Improve performance on change questions.</li>
+    <li> 
+        <ul>
+            <li> <h3> Knowing issues; </h3> </li>
+            <li> There is no UX if there is no game. </li>
+        </ul> 
+     </li>
+     <li> 
+        <ul>
+            <li> <h3> Fixed issues; </h3> </li>
+            <li> Adding some UX on if there is no question. </li>
+        </ul> 
+     </li>
+</ul>
 <a href="https://ogulcan-question.netlify.app/" target="_blank"><h1> Live on Netlify!</h1> </a>

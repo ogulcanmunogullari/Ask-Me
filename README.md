@@ -57,3 +57,7 @@
 </ul>
 
 <h1><a href="https://ogulcan-question.netlify.app/">  Live on Netlify! </a></h1>
+<<<<<<< HEAD
+=======
+
+>>>>>>> 01a5f7d6676ec8dea11bd872c27a1c9165ca9968

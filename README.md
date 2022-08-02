@@ -55,6 +55,21 @@
         </ul> 
      </li>
 </ul>
+<h1> 03.08.2022 Notes,</h1>
+<ul>
+    <li> Cannot find any designer so app be looking bad.</li>
+    <li> Decided using tailwind.</li>
+    <li> Decided colors from colorhunt.</li>
+    <li> 
+        <ul>
+            <li> Blue #3330E4 </li>
+            <li> Pink #F637EC </li>
+            <li> Orange #FBB454 </li>
+            <li> Yellow #FAEA48 </li>
+        </ul> 
+     </li>
+     <li>Adding Main Page style.</li>
+</ul>
 
 <h1><a href="https://ogulcan-question.netlify.app/">  Live on Netlify! </a></h1>
 <<<<<<< HEAD

@@ -7,7 +7,9 @@ function Header() {
   return (
     <div>
       <Link to={`/`} onClick={() => setScore(0)}>
-        Header
+        <div className="h-24 text-center flex justify-center items-center border-b-4 border-[#FAEA48]">
+          Main Page
+        </div>
       </Link>
     </div>
   );
